@@ -2,20 +2,36 @@ apiVersion: v1
 entries:
   netmaker:
   - apiVersion: v2
-    appVersion: 0.21.2
-    created: "2023-08-08T15:50:24.860625+05:30"
+    appVersion: 1.1.0
+    created: "2025-09-19T13:44:34.645249+05:30"
     dependencies:
     - condition: postgresql-ha.enabled
       name: postgresql-ha
       repository: oci://registry-1.docker.io/bitnamicharts
       version: 11.8.1
     description: A Helm chart to run HA Netmaker on Kubernetes
-    digest: 066e96154015b3d3bfd1fd456b5171d858ff77d161fa5b3cdb54687cd65cf68c
+    digest: 4744aadc718d0cc4f0384c0e45639c9381ab56d9d6a9feb7d6aa66627ba86135
     icon: https://raw.githubusercontent.com/gravitl/netmaker/master/netclient/windowsdata/resource/netclient.ico
     name: netmaker
     type: application
     urls:
-    - https://gravitl.github.io/netmaker-helm/netmaker-0.3.5.tgz
+    - netmaker-1.1.0.tgz
+    version: 1.1.0
+  - apiVersion: v2
+    appVersion: 0.21.2
+    created: "2025-09-19T13:44:34.639774+05:30"
+    dependencies:
+    - condition: postgresql-ha.enabled
+      name: postgresql-ha
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 11.8.1
+    description: A Helm chart to run HA Netmaker on Kubernetes
+    digest: 4e93984611624f6898b98f274694413c8e341d7fde038e56c6d2660b5b3b82dc
+    icon: https://raw.githubusercontent.com/gravitl/netmaker/master/netclient/windowsdata/resource/netclient.ico
+    name: netmaker
+    type: application
+    urls:
+    - netmaker-0.3.5.tgz
     version: 0.3.5
   postgresql-ha:
   - annotations:
@@ -23,7 +39,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 15.3.0
-    created: "2023-08-08T15:50:24.86669+05:30"
+    created: "2025-09-19T13:44:34.648823+05:30"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -53,6 +69,6 @@ entries:
     sources:
     - https://github.com/bitnami/charts/tree/main/bitnami/postgresql-ha
     urls:
-    - https://gravitl.github.io/netmaker-helm/charts/postgresql-ha-11.8.1.tgz
+    - charts/postgresql-ha-11.8.1.tgz
     version: 11.8.1
-generated: "2023-08-08T15:50:24.853521+05:30"
+generated: "2025-09-19T13:44:34.632404+05:30"
