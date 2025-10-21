@@ -3,18 +3,23 @@ entries:
   netmaker:
   - apiVersion: v2
     appVersion: 1.1.0
-    created: "2025-10-21T17:39:53.451154+04:00"
+    created: "2025-10-21T17:45:18.239599+04:00"
+    dependencies:
+    - condition: postgresql-ha.enabled
+      name: postgresql-ha
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 11.8.1
     description: A Helm chart to run HA Netmaker on Kubernetes
-    digest: 3e99a8def8dfbe435275bb65bc49e57928a30b440ed3d300351605fea1652428
+    digest: 3febf70a2ea7999cfff4d447d0b9991677d5391c53f94fc813ffb3d955b3fe89
     icon: https://raw.githubusercontent.com/gravitl/netmaker/master/netclient/windowsdata/resource/netclient.ico
     name: netmaker
     type: application
     urls:
-    - netmaker-1.1.2.tgz
+    - https://gravitl.github.io/netmaker-helm/netmaker-1.1.2.tgz
     version: 1.1.2
   - apiVersion: v2
     appVersion: 1.1.2
-    created: "2025-10-21T17:39:53.446317+04:00"
+    created: "2025-10-21T17:45:18.235901+04:00"
     dependencies:
     - condition: postgresql-ha.enabled
       name: postgresql-ha
@@ -26,11 +31,11 @@ entries:
     name: netmaker
     type: application
     urls:
-    - netmaker-1.1.1.tgz
+    - https://gravitl.github.io/netmaker-helm/netmaker-1.1.1.tgz
     version: 1.1.1
   - apiVersion: v2
     appVersion: 1.1.0
-    created: "2025-10-21T17:39:53.438352+04:00"
+    created: "2025-10-21T17:45:18.226702+04:00"
     dependencies:
     - condition: postgresql-ha.enabled
       name: postgresql-ha
@@ -42,11 +47,11 @@ entries:
     name: netmaker
     type: application
     urls:
-    - netmaker-1.1.0.tgz
+    - https://gravitl.github.io/netmaker-helm/netmaker-1.1.0.tgz
     version: 1.1.0
   - apiVersion: v2
     appVersion: 0.21.2
-    created: "2025-10-21T17:39:53.432297+04:00"
+    created: "2025-10-21T17:45:18.221114+04:00"
     dependencies:
     - condition: postgresql-ha.enabled
       name: postgresql-ha
@@ -58,6 +63,44 @@ entries:
     name: netmaker
     type: application
     urls:
-    - netmaker-0.3.5.tgz
+    - https://gravitl.github.io/netmaker-helm/netmaker-0.3.5.tgz
     version: 0.3.5
-generated: "2025-10-21T17:39:53.424713+04:00"
+  postgresql-ha:
+  - annotations:
+      category: Database
+      licenses: Apache-2.0
+    apiVersion: v2
+    appVersion: 15.3.0
+    created: "2025-10-21T17:45:18.243345+04:00"
+    dependencies:
+    - name: common
+      repository: oci://registry-1.docker.io/bitnamicharts
+      tags:
+      - bitnami-common
+      version: 2.x.x
+    description: This PostgreSQL cluster solution includes the PostgreSQL replication
+      manager, an open-source tool for managing replication and failover on PostgreSQL
+      clusters.
+    digest: 3c4b6bb6b6b399f600fb972067fb94d5feccf34db9199cb2efdcc33487dd7b0c
+    home: https://bitnami.com
+    icon: https://bitnami.com/assets/stacks/postgresql/img/postgresql-stack-220x234.png
+    keywords:
+    - postgresql
+    - repmgr
+    - pgpool
+    - postgres
+    - database
+    - sql
+    - replication
+    - cluster
+    - high availability
+    maintainers:
+    - name: VMware, Inc.
+      url: https://github.com/bitnami/charts
+    name: postgresql-ha
+    sources:
+    - https://github.com/bitnami/charts/tree/main/bitnami/postgresql-ha
+    urls:
+    - https://gravitl.github.io/netmaker-helm/charts/postgresql-ha-11.8.1.tgz
+    version: 11.8.1
+generated: "2025-10-21T17:45:18.215262+04:00"
