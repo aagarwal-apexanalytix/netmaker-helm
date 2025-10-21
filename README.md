@@ -1,8 +1,47 @@
 # Netmaker Helm
 
-![Version: 0.2.0](https://img.shields.io/badge/Version-0.2.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.21.2](https://img.shields.io/badge/AppVersion-0.21.2-informational?style=flat-square)
+![Version: 1.1.2](https://img.shields.io/badge/Version-1.1.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.1.0](https://img.shields.io/badge/AppVersion-1.1.0-informational?style=flat-square)
 
 A Helm chart to run Netmaker with High Availability on Kubernetes
+
+## Quick Installation (Recommended)
+
+Run the automated installation script:
+
+```bash
+./install.sh
+```
+
+## Manual Installation Commands
+
+### Step 1: Install PostgreSQL HA
+
+```bash
+helm install netmaker-postgres oci://registry-1.docker.io/bitnamicharts/postgresql-ha --version 11.8.1 --set global.imageRegistry=public.ecr.aws --set postgresql.image.registry=public.ecr.aws --set postgresql.image.repository=bitnami/postgresql-repmgr --set postgresql.image.tag=18.0.0-debian-12-r12 --set postgresql.image.pullPolicy=IfNotPresent --set postgresql.database=netmaker --set postgresql.username=postgres --set postgresql.password=password123 --set postgresql.replicaCount=2 --set postgresql.repmgrUsername=repmgr --set postgresql.repmgrPassword=password123 --set postgresql.repmgrDatabase=repmgr --set pgpool.image.registry=public.ecr.aws --set pgpool.image.repository=bitnami/pgpool --set pgpool.image.tag=4.6.3-debian-12-r5 --set pgpool.image.pullPolicy=IfNotPresent --set persistence.size=1Gi --namespace netmaker --create-namespace --wait
+```
+
+### Step 2: Install Netmaker
+
+```bash
+helm install netmaker . --set postgresql-ha.enabled=false --set db.type=postgres --set db.host=netmaker-postgres-postgresql-ha-pgpool --set db.port=5432 --set db.username=postgres --set db.password=password123 --set db.database=netmaker --set ui.image.repository=gravitl/netmaker-ui --set ui.image.pullPolicy=Always --set ui.image.tag=v1.1.0 --set server.image.repository=gravitl/netmaker --set server.image.pullPolicy=Always --set server.image.tag=v1.1.0 --namespace netmaker
+```
+
+## Verification
+
+Check installation status:
+
+```bash
+kubectl get pods -n netmaker
+kubectl get svc -n netmaker
+```
+
+## Uninstall
+
+```bash
+helm uninstall netmaker -n netmaker
+helm uninstall netmaker-postgres -n netmaker
+kubectl delete namespace netmaker
+```
 
 ## Requirements
 
