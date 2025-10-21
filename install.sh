@@ -37,7 +37,9 @@ echo ""
 
 # Step 2: Install Netmaker
 echo "Step 2: Installing Netmaker..."
-helm install netmaker-1761049793 . \
+helm repo add netmaker https://gravitl.github.io/netmaker-helm/
+helm repo update
+helm install netmaker netmaker/netmaker \
   --set postgresql-ha.enabled=false \
   --set db.type=postgres \
   --set db.host=netmaker-postgres-postgresql-ha-pgpool \

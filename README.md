@@ -4,44 +4,6 @@
 
 A Helm chart to run Netmaker with High Availability on Kubernetes
 
-## Quick Installation (Recommended)
-
-Run the automated installation script:
-
-```bash
-./install.sh
-```
-
-## Manual Installation Commands
-
-### Step 1: Install PostgreSQL HA
-
-```bash
-helm install netmaker-postgres oci://registry-1.docker.io/bitnamicharts/postgresql-ha --version 11.8.1 --set global.imageRegistry=public.ecr.aws --set postgresql.image.registry=public.ecr.aws --set postgresql.image.repository=bitnami/postgresql-repmgr --set postgresql.image.tag=18.0.0-debian-12-r12 --set postgresql.image.pullPolicy=IfNotPresent --set postgresql.database=netmaker --set postgresql.username=postgres --set postgresql.password=password123 --set postgresql.replicaCount=2 --set postgresql.repmgrUsername=repmgr --set postgresql.repmgrPassword=password123 --set postgresql.repmgrDatabase=repmgr --set pgpool.image.registry=public.ecr.aws --set pgpool.image.repository=bitnami/pgpool --set pgpool.image.tag=4.6.3-debian-12-r5 --set pgpool.image.pullPolicy=IfNotPresent --set persistence.size=1Gi --namespace netmaker --create-namespace --wait
-```
-
-### Step 2: Install Netmaker
-
-```bash
-helm install netmaker . --set postgresql-ha.enabled=false --set db.type=postgres --set db.host=netmaker-postgres-postgresql-ha-pgpool --set db.port=5432 --set db.username=postgres --set db.password=password123 --set db.database=netmaker --set ui.image.repository=gravitl/netmaker-ui --set ui.image.pullPolicy=Always --set ui.image.tag=v1.1.0 --set server.image.repository=gravitl/netmaker --set server.image.pullPolicy=Always --set server.image.tag=v1.1.0 --namespace netmaker
-```
-
-## Verification
-
-Check installation status:
-
-```bash
-kubectl get pods -n netmaker
-kubectl get svc -n netmaker
-```
-
-## Uninstall
-
-```bash
-helm uninstall netmaker -n netmaker
-helm uninstall netmaker-postgres -n netmaker
-kubectl delete namespace netmaker
-```
 
 ## Requirements
 
@@ -62,18 +24,6 @@ Furthermore, the chart will by default install and use a postgresql cluster as i
 |------------|------|---------|
 | https://charts.bitnami.com/bitnami | postgresql-ha | 7.11.0 |
 
-### Example Install
-
-```
-helm repo add netmaker https://gravitl.github.io/netmaker-helm/
-helm install netmaker/netmaker --generate-name \ # generate a random id for the deploy 
---set baseDomain=nm.example.com \ # the base wildcard domain to use for the netmaker api/dashboard/mq ingress 
---set server.replicas=3 \ # number of server replicas to deploy (3 by default) 
---set ingress.enabled=true \ # deploy ingress automatically (requires nginx and cert-manager + letsencrypt) 
---set ingress.kubernetes.io/ingress.class=nginx \ # ingress class to use
---set ingress.cert-manager.io/cluster-issuer=letsencrypt-prod \ # LetsEncrypt certificate issuer to use
---set postgresql-ha.postgresql.replicaCount=2 \ # number of DB replicas to deploy (default 2)
-```
 
 ### Recommended Settings:
 
@@ -97,19 +47,50 @@ If you are not using Nginx and LetsEncrypt, we recommend leaving ingress.enabled
 `api.<baseDomain>`
 `broker.<baseDomain>`
 
-You can find example ingress objects in the kube/example folder.
 
-#### DNS
-By Default, the helm chart will deploy without DNS enabled. To enable DNS, specify with:
-`--set dns.enabled=true` 
-This will require specifying a RWX storage class, e.g.:
-`--set dns.RWX.storageClassName=nfs`
-This will also require specifying a service address for DNS. Choose a valid ipv4 address from the service IP CIDR for your cluster, e.g.:
-`--set dns.clusterIP=10.245.69.69`
+## Quick Installation (Recommended)
 
-**This address will only be reachable from hosts that have access to the cluster service CIDR.** It is only designed for use cases related to k8s. If you want a more general-use Netmaker server on Kubernetes for use cases outside of k8s, you will need to do one of the following:
-- bind the CoreDNS service to port 53 on one of your worker nodes and set the COREDNS_ADDRESS equal to the public IP of the worker node
-- Create a private Network with Netmaker and set the COREDNS_ADDRESS equal to the private address of the host running CoreDNS. For this, CoreDNS will need a node selector and will ideally run on the same host as one of the Netmaker server instances.
+Run the automated installation script:
+
+```bash
+./install.sh
+```
+
+## Manual Installation Commands
+
+### Step 1: Install PostgreSQL HA
+
+```bash
+helm install netmaker-postgres oci://registry-1.docker.io/bitnamicharts/postgresql-ha --version 11.8.1 --set global.imageRegistry=public.ecr.aws --set postgresql.image.registry=public.ecr.aws --set postgresql.image.repository=bitnami/postgresql-repmgr --set postgresql.image.tag=18.0.0-debian-12-r12 --set postgresql.image.pullPolicy=IfNotPresent --set postgresql.database=netmaker --set postgresql.username=postgres --set postgresql.password=password123 --set postgresql.replicaCount=2 --set postgresql.repmgrUsername=repmgr --set postgresql.repmgrPassword=password123 --set postgresql.repmgrDatabase=repmgr --set pgpool.image.registry=public.ecr.aws --set pgpool.image.repository=bitnami/pgpool --set pgpool.image.tag=4.6.3-debian-12-r5 --set pgpool.image.pullPolicy=IfNotPresent --set persistence.size=1Gi --namespace netmaker --create-namespace --wait
+```
+
+### Step 2: Install Netmaker
+
+```bash
+helm repo add netmaker https://gravitl.github.io/netmaker-helm/
+helm repo update
+
+helm install netmaker netmaker/netmaker --set postgresql-ha.enabled=false --set db.type=postgres --set db.host=netmaker-postgres-postgresql-ha-pgpool --set db.port=5432 --set db.username=postgres --set db.password=password123 --set db.database=netmaker --set ui.image.repository=gravitl/netmaker-ui --set ui.image.pullPolicy=Always --set ui.image.tag=v1.1.0 --set server.image.repository=gravitl/netmaker --set server.image.pullPolicy=Always --set server.image.tag=v1.1.0 --namespace netmaker
+```
+
+## Verification
+
+Check installation status:
+
+```bash
+kubectl get pods -n netmaker
+kubectl get svc -n netmaker
+```
+
+## Uninstall
+
+```bash
+helm uninstall netmaker -n netmaker
+helm uninstall netmaker-postgres -n netmaker
+kubectl delete namespace netmaker
+```
+
+
 
 ## Values
 
