@@ -125,20 +125,30 @@ db:
 
 postgresql-ha:
   enabled: true
-  postgresql:
-    # -- postgres user to generate
-    username: postgres
-    # -- postgres pass to generate
-    password: password123  # set your own secure password
-    # -- postgress db to generate
-    database: netmaker
-    # -- postgress number of replicas to deploy
-    replicaCount: 2
-    repmgrUsername: postgres
-    repmgrPassword: password123  # set your own secure password
-    repmgrDatabase: repmgr
-  persistence:
-    # -- size of postgres DB
-    size: 1Gi
 
+  # Optional: switch the default image registry for all Bitnami images
+  global:
+    imageRegistry: public.ecr.aws   # or keep docker.io if you prefer
+
+  postgresql:
+    image:
+      registry: public.ecr.aws
+      repository: bitnami/postgresql-repmgr
+      tag: 18.0.0-debian-12-r12   # pick the exact tag you want
+      pullPolicy: IfNotPresent     # or Always
+    # other postgres settings...
+    replicaCount: 2
+    username: postgres
+    password: password123
+    database: netmaker
+    repmgrUsername: repmgr        # recommended (instead of postgres)
+    repmgrPassword: password123
+    repmgrDatabase: repmgr
+
+  pgpool:
+    image:
+      registry: public.ecr.aws
+      repository: bitnami/pgpool
+      tag: 4.6.3-debian-12-r5     # pick a matching tag series
+      pullPolicy: IfNotPresent
 
