@@ -3,14 +3,14 @@ entries:
   netmaker:
   - apiVersion: v2
     appVersion: 1.1.1
-    created: "2025-10-21T16:20:24.172908+04:00"
+    created: "2025-10-21T16:26:10.21532+04:00"
     dependencies:
     - condition: postgresql-ha.enabled
       name: postgresql-ha
       repository: oci://ghcr.io/bitnami/charts
       version: 11.8.1
     description: A Helm chart to run HA Netmaker on Kubernetes
-    digest: 40837158315e374380f2772ecb04fa2770e093dd6214318415ecdca18966e660
+    digest: 53ea08f01515a3ac1e61398f4ef6f98ea1a8d9acdef83d7a56471c574905b924
     icon: https://raw.githubusercontent.com/gravitl/netmaker/master/netclient/windowsdata/resource/netclient.ico
     name: netmaker
     type: application
@@ -19,7 +19,7 @@ entries:
     version: 1.1.1
   - apiVersion: v2
     appVersion: 1.1.0
-    created: "2025-10-21T16:20:24.164084+04:00"
+    created: "2025-10-21T16:26:10.207251+04:00"
     dependencies:
     - condition: postgresql-ha.enabled
       name: postgresql-ha
@@ -35,7 +35,7 @@ entries:
     version: 1.1.0
   - apiVersion: v2
     appVersion: 0.21.2
-    created: "2025-10-21T16:20:24.154941+04:00"
+    created: "2025-10-21T16:26:10.201081+04:00"
     dependencies:
     - condition: postgresql-ha.enabled
       name: postgresql-ha
@@ -55,7 +55,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 15.3.0
-    created: "2025-10-21T16:20:24.176332+04:00"
+    created: "2025-10-21T16:26:10.220187+04:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -87,4 +87,4 @@ entries:
     urls:
     - charts/postgresql-ha-11.8.1.tgz
     version: 11.8.1
-generated: "2025-10-21T16:20:24.148046+04:00"
+generated: "2025-10-21T16:26:10.193347+04:00"
