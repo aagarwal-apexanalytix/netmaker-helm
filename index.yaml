@@ -3,14 +3,14 @@ entries:
   netmaker:
   - apiVersion: v2
     appVersion: 1.1.2
-    created: "2025-10-21T16:39:53.590186+04:00"
+    created: "2025-10-21T16:53:25.17551+04:00"
     dependencies:
     - condition: postgresql-ha.enabled
       name: postgresql-ha
-      repository: oci://ghcr.io/bitnami/charts
+      repository: oci://registry-1.docker.io/bitnamicharts
       version: 11.8.1
     description: A Helm chart to run HA Netmaker on Kubernetes
-    digest: 22ec9b0880bfde655b5049dff8988746e2e3ce63e4f7846fd5a24437d758d8b2
+    digest: 06648a8f4783538f2e917a26fa44b181abcb8560d2d2686f4bdf687e8c3bfb60
     icon: https://raw.githubusercontent.com/gravitl/netmaker/master/netclient/windowsdata/resource/netclient.ico
     name: netmaker
     type: application
@@ -19,7 +19,7 @@ entries:
     version: 1.1.2
   - apiVersion: v2
     appVersion: 1.1.2
-    created: "2025-10-21T16:39:53.578054+04:00"
+    created: "2025-10-21T16:53:25.165992+04:00"
     dependencies:
     - condition: postgresql-ha.enabled
       name: postgresql-ha
@@ -35,7 +35,7 @@ entries:
     version: 1.1.1
   - apiVersion: v2
     appVersion: 1.1.0
-    created: "2025-10-21T16:39:53.569824+04:00"
+    created: "2025-10-21T16:53:25.153869+04:00"
     dependencies:
     - condition: postgresql-ha.enabled
       name: postgresql-ha
@@ -51,7 +51,7 @@ entries:
     version: 1.1.0
   - apiVersion: v2
     appVersion: 0.21.2
-    created: "2025-10-21T16:39:53.564654+04:00"
+    created: "2025-10-21T16:53:25.14793+04:00"
     dependencies:
     - condition: postgresql-ha.enabled
       name: postgresql-ha
@@ -71,7 +71,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 15.3.0
-    created: "2025-10-21T16:39:53.594283+04:00"
+    created: "2025-10-21T16:53:25.178759+04:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -103,4 +103,4 @@ entries:
     urls:
     - charts/postgresql-ha-11.8.1.tgz
     version: 11.8.1
-generated: "2025-10-21T16:39:53.557187+04:00"
+generated: "2025-10-21T16:53:25.1398+04:00"

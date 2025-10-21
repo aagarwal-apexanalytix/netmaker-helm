@@ -26,5 +26,5 @@ appVersion: "1.1.2"
 dependencies:
   - name: postgresql-ha
     version: 11.8.1
-    repository: oci://ghcr.io/bitnami/charts
+    repository: oci://registry-1.docker.io/bitnamicharts
     condition: postgresql-ha.enabled
