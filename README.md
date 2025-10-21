@@ -29,9 +29,7 @@ Furthermore, the chart will by default install and use a postgresql cluster as i
 
 This install has some notable exceptions:
 - Ingress **must** be configured on your cluster, with cluster issuer for TLS certs
-- DNS will be disabled
 
-Below, we discuss the considerations for Ingress, Kernel WireGuard, and DNS.
 
 #### MQ
 
