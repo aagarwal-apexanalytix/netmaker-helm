@@ -3,14 +3,9 @@ entries:
   netmaker:
   - apiVersion: v2
     appVersion: 1.1.0
-    created: "2025-10-21T17:33:09.470172+04:00"
-    dependencies:
-    - condition: postgresql-ha.enabled
-      name: postgresql-ha
-      repository: oci://registry-1.docker.io/bitnamicharts
-      version: 11.8.1
+    created: "2025-10-21T17:39:53.451154+04:00"
     description: A Helm chart to run HA Netmaker on Kubernetes
-    digest: 32e1ca24dceea8f4ead2555369b9f57d112b344e5eb72726ee7f665011279156
+    digest: 3e99a8def8dfbe435275bb65bc49e57928a30b440ed3d300351605fea1652428
     icon: https://raw.githubusercontent.com/gravitl/netmaker/master/netclient/windowsdata/resource/netclient.ico
     name: netmaker
     type: application
@@ -19,7 +14,7 @@ entries:
     version: 1.1.2
   - apiVersion: v2
     appVersion: 1.1.2
-    created: "2025-10-21T17:33:09.450905+04:00"
+    created: "2025-10-21T17:39:53.446317+04:00"
     dependencies:
     - condition: postgresql-ha.enabled
       name: postgresql-ha
@@ -35,7 +30,7 @@ entries:
     version: 1.1.1
   - apiVersion: v2
     appVersion: 1.1.0
-    created: "2025-10-21T17:33:09.441214+04:00"
+    created: "2025-10-21T17:39:53.438352+04:00"
     dependencies:
     - condition: postgresql-ha.enabled
       name: postgresql-ha
@@ -51,7 +46,7 @@ entries:
     version: 1.1.0
   - apiVersion: v2
     appVersion: 0.21.2
-    created: "2025-10-21T17:33:09.435864+04:00"
+    created: "2025-10-21T17:39:53.432297+04:00"
     dependencies:
     - condition: postgresql-ha.enabled
       name: postgresql-ha
@@ -65,42 +60,4 @@ entries:
     urls:
     - netmaker-0.3.5.tgz
     version: 0.3.5
-  postgresql-ha:
-  - annotations:
-      category: Database
-      licenses: Apache-2.0
-    apiVersion: v2
-    appVersion: 15.3.0
-    created: "2025-10-21T17:33:09.473369+04:00"
-    dependencies:
-    - name: common
-      repository: oci://registry-1.docker.io/bitnamicharts
-      tags:
-      - bitnami-common
-      version: 2.x.x
-    description: This PostgreSQL cluster solution includes the PostgreSQL replication
-      manager, an open-source tool for managing replication and failover on PostgreSQL
-      clusters.
-    digest: 3c4b6bb6b6b399f600fb972067fb94d5feccf34db9199cb2efdcc33487dd7b0c
-    home: https://bitnami.com
-    icon: https://bitnami.com/assets/stacks/postgresql/img/postgresql-stack-220x234.png
-    keywords:
-    - postgresql
-    - repmgr
-    - pgpool
-    - postgres
-    - database
-    - sql
-    - replication
-    - cluster
-    - high availability
-    maintainers:
-    - name: VMware, Inc.
-      url: https://github.com/bitnami/charts
-    name: postgresql-ha
-    sources:
-    - https://github.com/bitnami/charts/tree/main/bitnami/postgresql-ha
-    urls:
-    - charts/postgresql-ha-11.8.1.tgz
-    version: 11.8.1
-generated: "2025-10-21T17:33:09.427892+04:00"
+generated: "2025-10-21T17:39:53.424713+04:00"
