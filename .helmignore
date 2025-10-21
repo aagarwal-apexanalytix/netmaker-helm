@@ -1,5 +1,35 @@
-# comment
+# Patterns to ignore when building packages.
+# This supports shell glob matching, relative path matching, and
+# negation (prefixed with !). Only one pattern per line.
+.DS_Store
+# Common VCS dirs
+.git/
+.gitignore
+.bzr/
+.bzrignore
+.hg/
+.hgignore
+.svn/
+# Common backup files
+*.swp
+*.bak
+*.tmp
+*.orig
+*~
+# Various IDEs
+.project
+.idea/
+*.tmproj
+.vscode/
 
-# Match any file or path named .git
-.git
+# Ignore packaged charts (but not in charts/ directory)
+netmaker-*.tgz
 
+# Ignore install scripts and docs
+install.sh
+INSTALL.md
+QUICK_START.md
+dep.sh
+
+# Ignore index
+index.yaml
