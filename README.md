@@ -55,7 +55,7 @@ helm repo add netmaker https://gravitl.github.io/netmaker-helm/
 
 helm repo update
 
-helm install netmaker netmaker/netmaker --set baseDomain=nm.example.com --set server.replicas=3 --set ingress.enabled=true --set ingress.kubernetes.io/ingress.class=nginx --set ingress.cert-manager.io/cluster-issuer=letsencrypt-prod --set postgresql-ha.postgresql.replicaCount=2 --set db.username=postgres --set db.password=password123 --set ui.image.repository=gravitl/netmaker-ui --set ui.image.pullPolicy=Always --set ui.image.tag=v1.1.0 --set server.image.repository=gravitl/netmaker --set server.image.pullPolicy=Always --set server.image.tag=v1.1.0 --namespace netmaker
+helm install netmaker netmaker/netmaker --set baseDomain=nm.example.com --set server.replicas=3 --set ingress.enabled=true --set ingress.kubernetes.io/ingress.class=nginx --set ingress.cert-manager.io/cluster-issuer=letsencrypt-prod --set postgresql-ha.postgresql.replicaCount=2 --set db.username=postgres --set db.password=password123 --set ui.image.repository=gravitl/netmaker-ui --set ui.image.pullPolicy=Always --set ui.image.tag=v1.1.0 --set server.image.repository=gravitl/netmaker --set server.image.pullPolicy=Always --set server.image.tag=v1.1.0 --namespace netmaker --create-namespace
 
 ```
 
