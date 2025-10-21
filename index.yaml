@@ -3,14 +3,14 @@ entries:
   netmaker:
   - apiVersion: v2
     appVersion: 1.1.0
-    created: "2025-10-21T17:45:18.239599+04:00"
+    created: "2025-10-21T18:26:39.291424+04:00"
     dependencies:
     - condition: postgresql-ha.enabled
       name: postgresql-ha
       repository: oci://registry-1.docker.io/bitnamicharts
       version: 11.8.1
     description: A Helm chart to run HA Netmaker on Kubernetes
-    digest: 3febf70a2ea7999cfff4d447d0b9991677d5391c53f94fc813ffb3d955b3fe89
+    digest: 550d90bcdc7d446668b3c2edd9fdc7886a09171980a8a48067ca06c8f436708e
     icon: https://raw.githubusercontent.com/gravitl/netmaker/master/netclient/windowsdata/resource/netclient.ico
     name: netmaker
     type: application
@@ -19,7 +19,7 @@ entries:
     version: 1.1.2
   - apiVersion: v2
     appVersion: 1.1.2
-    created: "2025-10-21T17:45:18.235901+04:00"
+    created: "2025-10-21T18:26:39.287323+04:00"
     dependencies:
     - condition: postgresql-ha.enabled
       name: postgresql-ha
@@ -35,7 +35,7 @@ entries:
     version: 1.1.1
   - apiVersion: v2
     appVersion: 1.1.0
-    created: "2025-10-21T17:45:18.226702+04:00"
+    created: "2025-10-21T18:26:39.277654+04:00"
     dependencies:
     - condition: postgresql-ha.enabled
       name: postgresql-ha
@@ -51,7 +51,7 @@ entries:
     version: 1.1.0
   - apiVersion: v2
     appVersion: 0.21.2
-    created: "2025-10-21T17:45:18.221114+04:00"
+    created: "2025-10-21T18:26:39.27189+04:00"
     dependencies:
     - condition: postgresql-ha.enabled
       name: postgresql-ha
@@ -71,7 +71,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 15.3.0
-    created: "2025-10-21T17:45:18.243345+04:00"
+    created: "2025-10-21T18:26:39.29504+04:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -103,4 +103,4 @@ entries:
     urls:
     - https://gravitl.github.io/netmaker-helm/charts/postgresql-ha-11.8.1.tgz
     version: 11.8.1
-generated: "2025-10-21T17:45:18.215262+04:00"
+generated: "2025-10-21T18:26:39.26452+04:00"
