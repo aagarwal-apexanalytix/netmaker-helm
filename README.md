@@ -72,7 +72,6 @@ kubectl get svc -n netmaker
 
 ```bash
 helm uninstall netmaker -n netmaker
-helm uninstall netmaker-postgres -n netmaker
 kubectl delete namespace netmaker
 ```
 
