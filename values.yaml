@@ -105,9 +105,10 @@ service:
 ingress:
   # -- attempts to configure ingress if true
   enabled: true
+  # -- ingress class name (e.g. nginx, traefik)
+  className: nginx
   tls: true
   annotations:
-    kubernetes.io/ingress.class: nginx
     cert-manager.io/cluster-issuer: letsencrypt-prod
   hostPrefix:
     ui: "dashboard"
@@ -122,6 +123,8 @@ db:
   password: password123 # set your own secure password
   # -- postgress db to generate
   database: netmaker
+  # -- postgres sslmode (disable, require, verify-ca, verify-full)
+  sslmode: disable
 
 postgresql-ha:
   # -- whether to install PostgreSQL HA as a dependency
