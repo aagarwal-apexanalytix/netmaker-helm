@@ -38,12 +38,28 @@ The MQ Broker is deployed either with Ingress (Nginx ) preconfigured, or without
 #### Ingress	
 To run HA Netmaker, you must have ingress installed and enabled on your cluster with valid TLS certificates (not self-signed). If you are running Nginx as your Ingress Controller and LetsEncrypt for TLS certificate management, you can run the helm install with the following settings:
 `--set ingress.enabled=true`
+`--set ingress.className=nginx`
 `--set ingress.annotations.cert-manager.io/cluster-issuer=<your LE issuer name>`
 
 If you are not using Nginx and LetsEncrypt, we recommend leaving ingress.enabled=false (default), and then manually creating the ingress objects post-install. You will need three ingress objects with TLS:
 `dashboard.<baseDomain>`
 `api.<baseDomain>`
 `broker.<baseDomain>`
+
+#### Cert-Manager ClusterIssuer
+
+This chart can optionally create a Let's Encrypt ClusterIssuer for cert-manager. This is useful if you don't already have a ClusterIssuer configured in your cluster.
+
+To enable the ClusterIssuer:
+```bash
+--set certManager.enabled=true
+--set certManager.email=your-email@example.com
+```
+
+The ClusterIssuer will be created with the name specified in `certManager.issuerName` (default: `letsencrypt-prod`) and will use HTTP-01 challenge for domain validation.
+
+**Note:** If you already have a ClusterIssuer in your cluster, leave `certManager.enabled=false` and just set the ingress annotation to reference your existing issuer:
+`--set ingress.annotations.cert-manager\.io/cluster-issuer=<your-issuer-name>`
 
 
 
@@ -82,13 +98,17 @@ kubectl delete namespace netmaker
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| certManager.enabled | bool | `false` | whether to create a ClusterIssuer for cert-manager |
+| certManager.issuerName | string | `"letsencrypt-prod"` | name of the ClusterIssuer to create |
+| certManager.email | string | `""` | email address for Let's Encrypt registration (required if enabled) |
+| db.sslmode | string | `"disable"` | postgres sslmode (disable, require, verify-ca, verify-full) |
 | dns.enabled | bool | `false` | whether or not to run with DNS (CoreDNS) |
 | dns.storageSize | string | `"128Mi"` | volume size for DNS (only needs to hold one file) |
 | fullnameOverride | string | `""` | override the full name for netmaker objects  |
 | image.pullPolicy | string | `"Always"` | Pull Policy for images |
 | image.repository | string | `"gravitl/netmaker"` | The image repo to pull Netmaker image from  |
 | image.tag | string | `"latest"` | Override the image tag to pull  |
-| ingress.annotations."kubernetes.io/ingress.class" | string | `"nginx"` | ingress class name |
+| ingress.className | string | `"nginx"` | ingress class name (e.g. nginx, traefik) |
 | ingress.annotations."cert-manager.io/cluster-issuer" | string | `"letsencrypt-prod"` | cert manager cluster issuer name |
 | ingress.enabled | bool | `false` | attempts to configure ingress if true |
 | ingress.hostPrefix.mq | string | `"broker"` | broker route subdomain |

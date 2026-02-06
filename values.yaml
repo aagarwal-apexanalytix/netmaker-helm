@@ -102,6 +102,14 @@ service:
   # -- port for UI service
   uiPort: 80
 
+certManager:
+  # -- whether to create a ClusterIssuer for cert-manager
+  enabled: false
+  # -- name of the ClusterIssuer to create
+  issuerName: letsencrypt-prod
+  # -- email address for Let's Encrypt registration (required if enabled)
+  email: "your-email@example.com"
+
 ingress:
   # -- attempts to configure ingress if true
   enabled: true
@@ -154,6 +162,8 @@ postgresql-ha:
       repository: bitnami/pgpool
       tag: 4.6.3-debian-12-r5
       pullPolicy: IfNotPresent
+    # -- pgpool admin password (set to avoid password prompts on upgrades)
+    adminPassword: password123
 
   persistence:
     size: 1Gi
