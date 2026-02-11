@@ -9,7 +9,7 @@ spec:
     selector:
      matchLabels:
         app: {{ include "netmaker.fullname" . }}
-    serviceName: {{ include "netmaker.fullname" . }}-headless
+    serviceName: {{ include "netmaker.fullname" . }}-rest
     template:
         metadata:
             labels:
