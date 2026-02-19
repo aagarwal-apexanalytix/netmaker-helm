@@ -144,7 +144,19 @@ db:
   # -- postgress db to generate
   database: netmaker
   # -- postgres sslmode (disable, require, verify-ca, verify-full)
-  sslmode: require
+  sslmode: disable
+  # -- use an existing Kubernetes secret for DB credentials instead of values above
+  existingSecret:
+    enabled: false
+    # -- name of the existing secret
+    name: ""
+    # -- key mappings: maps each DB parameter to a key in the secret
+    keys:
+      host: "pgbouncer-host"
+      port: "pgbouncer-port"
+      username: "user"
+      password: "password"
+      database: "dbname"
 
 postgresql-ha:
   # -- whether to install PostgreSQL HA as a dependency
