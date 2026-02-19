@@ -144,7 +144,7 @@ db:
   # -- postgress db to generate
   database: netmaker
   # -- postgres sslmode (disable, require, verify-ca, verify-full)
-  sslmode: disable
+  sslmode: require
 
 postgresql-ha:
   # -- whether to install PostgreSQL HA as a dependency
