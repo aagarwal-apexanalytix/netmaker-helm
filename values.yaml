@@ -85,6 +85,10 @@ server:
 dns:
   # -- whether or not to deploy coredns
   enabled: false
+  # -- whether to auto-assign gateway VPN IP as DNS for new ext clients
+  manageDNS: true
+  # -- default DNS servers for new ext clients (comma-separated IPs). Overrides gateway VPN IP auto-assignment.
+  extClientDNS: ""
   storageSize: 128Mi
   RWX:
     storageClassName: ""

@@ -13,7 +13,11 @@ data:
   SERVER_HOST: "SERVER_PUBLIC_IP"
   SERVER_API_CONN_STRING: "{{ .Values.ingress.hostPrefix.rest }}.{{ required "A valid .Values.baseDomain entry required!" .Values.baseDomain}}:443"
   COREDNS_ADDR: "SERVER_PUBLIC_IP"
-  DNS_MODE: "on"
+  DNS_MODE: {{ if .Values.dns.enabled }}"on"{{ else }}"off"{{ end }}
+  MANAGE_DNS: "{{ .Values.dns.manageDNS }}"
+  {{- if .Values.dns.extClientDNS }}
+  EXT_CLIENT_DNS: "{{ .Values.dns.extClientDNS }}"
+  {{- end }}
   SERVER_HTTP_HOST: "{{ .Values.ingress.hostPrefix.rest }}.{{ required "A valid .Values.baseDomain entry required!" .Values.baseDomain}}"
   API_PORT: "8081"
   MESSAGEQUEUE_BACKEND: "on"
