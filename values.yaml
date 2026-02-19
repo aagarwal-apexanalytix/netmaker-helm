@@ -122,6 +122,18 @@ ingress:
     ui: "dashboard"
     broker: "broker"
     rest: "api"
+
+gateway:
+  # -- create Gateway API HTTPRoutes instead of (or in addition to) Ingress
+  enabled: false
+  # -- annotations to add to HTTPRoute resources
+  annotations: {}
+  # -- parent Gateway references (list)
+  parentRefs:
+    - name: ""
+      namespace: ""
+      sectionName: https
+
 db:
   type: "postgres"
   host: ""
